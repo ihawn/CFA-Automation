@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CFA-AutomationUI", "CFA-AutomationUI.csproj", "{976D4C47-578F-451D-871A-BE223FDF6AB9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CFA-AutomationUI", "CFA-AutomationUI.csproj", "{418F4A7A-8F66-47D7-9DEF-BCE3A9B42A79}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{976D4C47-578F-451D-871A-BE223FDF6AB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{976D4C47-578F-451D-871A-BE223FDF6AB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{976D4C47-578F-451D-871A-BE223FDF6AB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{976D4C47-578F-451D-871A-BE223FDF6AB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{418F4A7A-8F66-47D7-9DEF-BCE3A9B42A79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{418F4A7A-8F66-47D7-9DEF-BCE3A9B42A79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{418F4A7A-8F66-47D7-9DEF-BCE3A9B42A79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{418F4A7A-8F66-47D7-9DEF-BCE3A9B42A79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {46438C19-6135-4D4B-A73B-8715FB7F0CAD}
+		SolutionGuid = {B85A9515-3D0E-4D07-B40C-C758D2D172BC}
 	EndGlobalSection
 EndGlobal

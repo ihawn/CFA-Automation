@@ -1,7 +1,31 @@
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
+
+.custom-card {
+    border: 2px solid #007bff;
+    border-radius: 10px;
+    box-shadow: 0 0 2px #1f4e7f;
+    background-color: #232933;
+}
+
+.custom-field {
+    border: 2px solid #007bff;
+    border-radius: 10px;
+    background-color: #292b2f;
+    color: #fff;
+}
+
+.custom-button {
+    border: 2px solid #007bff;
+    border-radius: 10px;
+    background-color: #007bff;
+    color: #fff;
+}
+
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #1c1e21;
+    color: #fff;
 }
 
 h1:focus {

@@ -1,8 +1,29 @@
 {
   "version": 2,
-  "dgSpecHash": "HlxlyXDjZsmHhudg0LREZy85pBUTm+7i65Cz9oyXzRaBWkF4EjrIcoG5KPHHLc7OIGajUaG6Es1wqvGJhdEIGQ==",
+  "dgSpecHash": "CAsfaxL4cbc8+pwNcQTniG3GHNb/UZjMrJ7mgdxX1Mu9lKvitr7wNY/19JYCz/lIljncU4o1XD5dzX5ncFQ6ng==",
   "success": true,
   "projectFilePath": "C:\\Users\\Isaac\\Documents\\CFA-Automation\\UI\\CFA-AutomationUI\\CFA-AutomationUI.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Isaac\\.nuget\\packages\\blazorise\\1.2.1\\blazorise.1.2.1.nupkg.sha512",
+    "C:\\Users\\Isaac\\.nuget\\packages\\blazorise.bootstrap\\1.2.1\\blazorise.bootstrap.1.2.1.nupkg.sha512",
+    "C:\\Users\\Isaac\\.nuget\\packages\\blazorise.components\\1.2.1\\blazorise.components.1.2.1.nupkg.sha512",
+    "C:\\Users\\Isaac\\.nuget\\packages\\blazorise.icons.fontawesome\\1.2.1\\blazorise.icons.fontawesome.1.2.1.nupkg.sha512",
+    "C:\\Users\\Isaac\\.nuget\\packages\\blazorise.licensing\\1.1.0\\blazorise.licensing.1.1.0.nupkg.sha512",
+    "C:\\Users\\Isaac\\.nuget\\packages\\blazorise.snackbar\\1.2.1\\blazorise.snackbar.1.2.1.nupkg.sha512",
+    "C:\\Users\\Isaac\\.nuget\\packages\\microsoft.aspnetcore.authorization\\6.0.14\\microsoft.aspnetcore.authorization.6.0.14.nupkg.sha512",
+    "C:\\Users\\Isaac\\.nuget\\packages\\microsoft.aspnetcore.components\\6.0.14\\microsoft.aspnetcore.components.6.0.14.nupkg.sha512",
+    "C:\\Users\\Isaac\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\6.0.14\\microsoft.aspnetcore.components.analyzers.6.0.14.nupkg.sha512",
+    "C:\\Users\\Isaac\\.nuget\\packages\\microsoft.aspnetcore.components.forms\\6.0.14\\microsoft.aspnetcore.components.forms.6.0.14.nupkg.sha512",
+    "C:\\Users\\Isaac\\.nuget\\packages\\microsoft.aspnetcore.components.web\\6.0.14\\microsoft.aspnetcore.components.web.6.0.14.nupkg.sha512",
+    "C:\\Users\\Isaac\\.nuget\\packages\\microsoft.aspnetcore.metadata\\6.0.14\\microsoft.aspnetcore.metadata.6.0.14.nupkg.sha512",
+    "C:\\Users\\Isaac\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\6.0.1\\microsoft.extensions.dependencyinjection.6.0.1.nupkg.sha512",
+    "C:\\Users\\Isaac\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\Isaac\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.3\\microsoft.extensions.logging.abstractions.6.0.3.nupkg.sha512",
+    "C:\\Users\\Isaac\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
+    "C:\\Users\\Isaac\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\Isaac\\.nuget\\packages\\microsoft.jsinterop\\6.0.14\\microsoft.jsinterop.6.0.14.nupkg.sha512",
+    "C:\\Users\\Isaac\\.nuget\\packages\\system.io.pipelines\\6.0.3\\system.io.pipelines.6.0.3.nupkg.sha512",
+    "C:\\Users\\Isaac\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

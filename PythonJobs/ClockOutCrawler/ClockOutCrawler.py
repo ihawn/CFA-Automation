@@ -1,4 +1,6 @@
 import re
+import sys
+
 import pandas as pd
 import pdfplumber
 import pyodbc
@@ -14,10 +16,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
-report_start_date = "02/15/2023"
-report_end_date = "03/03/2023"
-username = ""
-password = ""
+report_start_date = sys.argv[1]
+report_end_date = sys.argv[2]
+username = sys.argv[3]
+password = sys.argv[4]
 
 
 login_url = "https://cfahome.okta.com/login/login.htm"
