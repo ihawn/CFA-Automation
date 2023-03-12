@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "9SjGi6FYrne/wnYmC5YxNDiBzmYehXh8jNhbef+1L3c=",
+  "Hash": "qLSPM7ndmqz/lECf2RP1rtytTwym7UIm2a60UzHKZeY=",
   "Source": "CFA-AutomationUI",
   "BasePath": "_content/CFA-AutomationUI",
   "Mode": "Default",
@@ -117,6 +117,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Isaac\\.nuget\\packages\\blazorise.snackbar\\1.2.1\\staticwebassets\\blazorise.snackbar.min.css"
+    },
+    {
+      "Identity": "C:\\Users\\Isaac\\.nuget\\packages\\blazorise.spinkit\\1.2.1\\staticwebassets\\blazorise.spinkit.css",
+      "SourceId": "Blazorise.SpinKit",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\Isaac\\.nuget\\packages\\blazorise.spinkit\\1.2.1\\staticwebassets\\",
+      "BasePath": "_content/Blazorise.SpinKit",
+      "RelativePath": "blazorise.spinkit.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\Isaac\\.nuget\\packages\\blazorise.spinkit\\1.2.1\\staticwebassets\\blazorise.spinkit.css"
+    },
+    {
+      "Identity": "C:\\Users\\Isaac\\.nuget\\packages\\blazorise.spinkit\\1.2.1\\staticwebassets\\blazorise.spinkit.min.css",
+      "SourceId": "Blazorise.SpinKit",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\Isaac\\.nuget\\packages\\blazorise.spinkit\\1.2.1\\staticwebassets\\",
+      "BasePath": "_content/Blazorise.SpinKit",
+      "RelativePath": "blazorise.spinkit.min.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\Isaac\\.nuget\\packages\\blazorise.spinkit\\1.2.1\\staticwebassets\\blazorise.spinkit.min.css"
     },
     {
       "Identity": "C:\\Users\\Isaac\\.nuget\\packages\\blazorise\\1.2.1\\staticwebassets\\blazorise.css",

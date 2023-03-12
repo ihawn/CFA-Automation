@@ -1,0 +1,80 @@
+﻿@using CFA_AutomationUI.Data
+@using CFA_AutomationUI.Models
+@using Blazorise
+@using Blazorise.Components
+@using System.Linq;
+@using Blazorise.SpinKit
+@using System.Collections.Generic
+
+
+@if (employeeRoles == null || roles== null || employees == null)
+{
+    <div class="center">
+        <SpinKit Type="SpinKitType.Chase" Color="#ffffff" Size="200px"/>
+    </div>
+}
+else
+{
+    <Card Class="custom-card mb-4">
+        <CardBody>
+            <Table Striped Hoverable>
+                <TableHeader>
+                    <TableRow>
+                        <TableHeaderCell Class="white-text">Name</TableHeaderCell>
+                        @foreach (var role in roles)
+                        {
+                            <TableHeaderCell Class="white-text">@role.Name</TableHeaderCell>
+                        }
+                    </TableRow>
+                </TableHeader>
+                <TableBody>
+                    @foreach (var employee in employees)
+                    {
+                        <TableRow>
+                            <TableRowCell Class="white-text">@employee.Name</TableRowCell>
+                            @foreach (var role in roles)
+                            {
+                                <TableRowCell>
+                                    <Switch TValue="bool" 
+                                        Checked=employeeRoles[employee.Id].Contains(role.Id)
+                                        CheckedChanged="@(e => RoleChanged(e, employee.Id, role.Id))">
+                                    </Switch>
+                                </TableRowCell>
+                            }
+                        </TableRow>
+                    }
+                </TableBody>
+            </Table>
+        </CardBody>
+    </Card>
+    
+}
+
+@code {
+    Dictionary<string, List<string>> employeeRoles;
+    List<Role> roles;
+    List<Employee> employees;
+
+    protected override void OnInitialized()
+    {
+        LoadData();
+    }
+
+    private void LoadData()
+    {
+        employeeRoles = DataRetriever.Retriever.GetEmployeeRoles();
+        roles = DataRetriever.Retriever.GetAllRoles();
+        employees = DataRetriever.Retriever.GetAllEmployees();
+
+        StateHasChanged();
+    }
+
+    void RoleChanged(bool value, string employeeId, string roleId)
+    {
+        DataRetriever.Retriever.SetPermission(value, roleId, employeeId);
+        if (value)
+            employeeRoles[employeeId].Add(roleId);
+        else
+            employeeRoles[employeeId] = employeeRoles[employeeId].Where(r => r != roleId).ToList();
+    }
+}

@@ -1,0 +1,240 @@
+﻿@using Blazorise
+@using Blazorise.SpinKit
+@using System.Diagnostics
+@using System.Text
+@using CFA_AutomationUI.Models;
+@using CFA_AutomationUI.Data;
+@using CFA_AutomationUI.Compoenents;
+
+
+<Card Class="custom-card mb-4">
+    <CardBody>
+        <CardTitle Size="3">
+            Clock Out Crawler Job
+        </CardTitle>
+        <Div Style="width: 60%; float:left">
+            <Fields>
+                <Row>
+                    <Field ColumnSize="ColumnSize.Is2.OnDesktop">
+                        <FieldLabel>From Date</FieldLabel>
+                        <div style="position: relative;">
+                            <DatePicker TValue=DateTime? Class="custom-field" Placeholder="Enter From Date" @ref="@_fromDate" @bind-Date="@_dateTime1" style="position: absolute; top: 0; left: 0;" />
+                        </div>
+                    </Field>
+
+                    <Field ColumnSize="ColumnSize.Is2.OnDesktop">
+                        <FieldLabel>Thru Date</FieldLabel>
+                        <div style="position: relative;">
+                            <DatePicker TValue=DateTime? Class="custom-field" Placeholder="Enter Thru Date" @ref="@_thruDate" @bind-Date="@_dateTime2" style="position: absolute; top: 0; left: 0;" />
+                        </div>
+                    </Field>
+                </Row>
+                <br />
+
+                <Field ColumnSize="ColumnSize.Is3.OnDesktop">
+                    <FieldLabel>Site Username</FieldLabel>
+                    <TextEdit Class="custom-field" Placeholder="Enter Site Username" @bind-Text="@_username"/>
+                </Field>
+                <br />
+
+                <Field ColumnSize="ColumnSize.Is3.OnDesktop">
+                    <FieldLabel>Site Password</FieldLabel>
+                    <TextEdit Class="custom-field" Placeholder="Enter Site Password" @bind-Text="@_password"/>
+                </Field>
+                <br />
+
+                <Row>
+                    <Check TValue="bool" Checked="@allRoles" CheckedChanged="@(e => ChangeReportRoleParameters(e, null))">All roles</Check>
+                    @foreach(var role in roles)
+                    {
+                        <Check TValue="bool"
+                            Checked=roleIdsForReport.Contains(role.Id)
+                            CheckedChanged="@(e => ChangeReportRoleParameters(e, role.Id))">@role.Name
+                        </Check>
+                    }
+                </Row>
+
+                <Check TValue="bool" Checked="@RunReportOnLastJobRun" CheckedChanged="@ChangeJobRunStatus">Run Report With Last Job Data</Check>
+                <br />
+                <Button @onclick="@(async () => 
+                    {   
+
+                        await RunClockInCrawlerJob(Config, _dateTime1.Value, _dateTime2.Value, _username, _password); 
+                        RunReport();
+                    })" Color="Color.Secondary" Class="custom-button">@JobButtonMessage</Button>
+                <Button Color="Color.Secondary" Class="custom-button-secondary" Clicked="@ShowModal">Roles</Button>
+                <br />
+                <br />
+                <div style="display: flex; justify-content: left;">
+                    @if(JobStatusVisible)
+                    {
+                        <p style="font-size: 20px;"><b>@JobStatus &ensp;</b></p>
+                    }
+
+                    @if(IsSpinKitVisible) 
+                    {
+                        <SpinKit Type="SpinKitType.Bounce" Color="#ffffff" Size="30px"/>
+                    }
+                </div>
+
+            </Fields>
+        </Div>
+
+        <Div Style="width: 40%; float:right">
+            @if(reportResults.Count() > 0)
+            {
+                <Table>
+                    <TableHeader>
+                        <TableRow>
+                            <TableHeaderCell Class="white-text">Shift Date</TableHeaderCell>
+                            <TableHeaderCell Class="white-text">ShiftType</TableHeaderCell>
+                            <TableHeaderCell Class="white-text">ClockOutVariance</TableHeaderCell>
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                        @foreach(var result in reportResults)
+                        {
+                            <TableRow>
+                                <TableRowCell Class="white-text">@result.ShiftDate.ToString("MM/dd/yyyy")</TableRowCell>
+                                <TableRowCell Class="white-text">@result.ShiftType</TableRowCell>
+                                <TableRowCell Class="white-text">@result.ClockOutVariance</TableRowCell>
+                            </TableRow>
+                        }
+                    </TableBody>
+                </Table>
+            }
+        </Div>
+    </CardBody>
+</Card>
+
+<Modal @ref="modalRef">
+    <ModalContent Size="ModalSize.Large" Background="Background.Dark">
+            <CFA_AutomationUI.Pages.EmployeeRoles />
+    </ModalContent>
+</Modal>
+
+
+@code
+{
+    private Modal modalRef;
+    private Task ShowModal()
+    {
+        return modalRef.Show();
+    }
+
+    private Task HideModal()
+    {
+        return modalRef.Hide();
+    }
+
+    [Inject]
+    private IConfiguration Config { get; set; }
+
+    string _username = "";
+    string _password = "";
+    DateTime? _dateTime1 = DateTime.Now.AddDays(-7);
+    DateTime? _dateTime2 = DateTime.Now;
+    DatePicker<DateTime?> _fromDate;
+    DatePicker<DateTime?> _thruDate;
+
+    bool RunReportOnLastJobRun = false;
+    bool IsSpinKitVisible = false;
+    bool JobStatusVisible = false;
+    string JobButtonMessage = "Run Job";
+    string JobStatus = "";
+
+    List<Role> roles = new List<Role>();
+    List<string> roleIdsForReport = new List<string>();
+    bool allRoles = true;
+
+    List<ClockOutVarianceEntry> reportResults = new List<ClockOutVarianceEntry>();
+
+    protected override void OnInitialized()
+    {
+        roles = DataRetriever.Retriever.GetAllRoles();
+        roleIdsForReport = roles.Select(r => r.Id).ToList();
+    }
+
+    private void ChangeJobRunStatus(bool value)
+    {
+        RunReportOnLastJobRun = value;
+        JobButtonMessage = value ? "Run Report" : "Run Job";
+    }
+
+    private void ChangeReportRoleParameters(bool value, string roleId)
+    {
+        if (roleId == null)
+            roleIdsForReport = value ? roles.Select(r => r.Id).ToList() : new List<string>();
+        else if (value)
+            roleIdsForReport.Add(roleId);
+        else
+            roleIdsForReport = roleIdsForReport.Where(r => r != roleId).ToList();
+        allRoles = roleIdsForReport.Count() == roles.Count();
+    }
+
+    private void RunReport()
+    {
+        reportResults = DataRetriever.Retriever.GetMostRecentClockOutVarianceReport(roleIdsForReport);
+    }
+
+
+    private async Task RunClockInCrawlerJob(IConfiguration config, DateTime fromDate, DateTime thruDate, string username, string password)
+    {
+        if(RunReportOnLastJobRun)
+        {
+            RunReport();
+            return;
+        }
+
+        IsSpinKitVisible = true;
+        JobStatusVisible = true;
+        JobStatus = "Running job";
+
+        StateHasChanged();
+
+        string pythonInterpreterPath = config.GetValue<string>("PythonInterpreterPath");
+        string pythonScriptPath = "-u " + config.GetValue<string>("PythonScriptPath");
+        string dataSavePath = config.GetValue<string>("ClockOutDataPath");
+
+        ProcessStartInfo startInfo = new ProcessStartInfo();
+        startInfo.FileName = pythonInterpreterPath;
+        startInfo.Arguments = pythonScriptPath 
+            + $" {fromDate.ToString("M/d/yyyy")} {thruDate.ToString("M/d/yyyy")} {username} {password} {dataSavePath}";
+        startInfo.RedirectStandardOutput = true;
+        startInfo.UseShellExecute = false;
+
+        Process process = new Process();
+        process.StartInfo = startInfo;
+        await UpdateStateChange(process);
+
+        process.Start();
+        process.BeginOutputReadLine();
+        process.WaitForExit();
+        process.CancelOutputRead();
+
+        IsSpinKitVisible = false; 
+        JobStatus = "Done";
+    }
+
+    async Task UpdateStateChange(Process process)
+    {
+        process.OutputDataReceived += async (sender, args) =>
+        {
+            if (!string.IsNullOrEmpty(args.Data))
+            {
+                await updateStatusMessage(args.Data);
+                await Task.Delay(1);
+            }
+        };
+
+        async Task updateStatusMessage(string data)
+        {
+            await Task.Run(() =>
+            {
+                Console.WriteLine(data);
+            });
+        }
+
+        await Task.Yield();
+    }
+}

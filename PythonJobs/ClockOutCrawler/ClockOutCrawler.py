@@ -1,15 +1,13 @@
 import re
 import sys
-
+from datetime import datetime
 import pandas as pd
 import pdfplumber
 import pyodbc
 import uuid
 import os
 import time as tm
-from datetime import datetime, time, timedelta
-from pandasql import sqldf
-import sqlalchemy
+from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
@@ -20,7 +18,7 @@ report_start_date = sys.argv[1]
 report_end_date = sys.argv[2]
 username = sys.argv[3]
 password = sys.argv[4]
-
+datapath = sys.argv[5]
 
 login_url = "https://cfahome.okta.com/login/login.htm"
 scrape_url = "https://backoffice.cfahome.com/tp/tpActualVsScheduledVarianceFilterAction.do"
@@ -28,7 +26,7 @@ scrape_url = "https://backoffice.cfahome.com/tp/tpActualVsScheduledVarianceFilte
 
 profile = webdriver.FirefoxProfile()
 profile.set_preference("browser.download.folderList", 2)
-profile.set_preference("browser.download.dir", os.getcwd())
+profile.set_preference("browser.download.dir", datapath)
 profile.set_preference("browser.download.manager.alertOnEXEOpen", False)
 profile.set_preference("browser.helperApps.neverAsk.saveToDisk", "application/msword, application/csv, "
                                                                  "application/ris, text/csv, image/png, "
@@ -47,57 +45,65 @@ profile.set_preference("browser.download.manager.useWindow", False)
 profile.set_preference("services.sync.prefs.sync.browser.download.manager.showWhenStarting", False)
 profile.set_preference("pdfjs.disabled", True)
 
-driver = webdriver.Firefox(profile)
-driver.get(login_url)
+report_content = ""
+
+with webdriver.Firefox(profile) as driver:
+    driver.get(login_url)
+
+    ## Login section
+    print("Logging in...")
+    sys.stdout.flush()
+
+    # Username
+    username_field = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.NAME, "username")))
+    username_field.send_keys(username)
+    next_button = driver.find_element(By.ID, "okta-signin-submit")
+    next_button.click()
+
+    # Password
+    password_field = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.NAME, "password")))
+    password_field.send_keys(password)
+    password_field.send_keys(Keys.RETURN)
+
+    # Wait for auth
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "dashboard-my-apps-title")))
 
 
-
-## Login section
-print("Logging in...")
-
-# Username
-username_field = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.NAME, "username")))
-username_field.send_keys(username)
-next_button = driver.find_element(By.ID, "okta-signin-submit")
-next_button.click()
-
-# Password
-password_field = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.NAME, "password")))
-password_field.send_keys(password)
-password_field.send_keys(Keys.RETURN)
-
-# Wait for auth
-WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "dashboard-my-apps-title")))
-
-
-## Scrape Section
-print("Crawling...")
-driver.get(scrape_url)
-
-# Report fields
-WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "reportStartDate")))
-driver.execute_script(f"document.getElementById('reportStartDate').value = \"{report_start_date}\";")
-driver.execute_script(f"document.getElementById('reportEndDate').value = \"{report_end_date}\";")
-
-# View report button
-button = driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/table/tbody/tr/td[2]/div[2]/table/tbody/tr/td/div/form/table/tbody/tr[2]/td/table[3]/tbody/tr/td/input")
-button.click()
-driver.close()
-
-
-print("Retrieving report...")
-while not os.path.exists(os.path.join(os.getcwd(), "tpActualVsScheduledVarianceAction.pdf")):
+    ## Scrape Section
+    print("Crawling...")
+    sys.stdout.flush()
     tm.sleep(1)
-tm.sleep(2)
 
+    driver.get(scrape_url)
+
+    # Report fields
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "reportStartDate")))
+    driver.execute_script(f"document.getElementById('reportStartDate').value = \"{report_start_date}\";")
+    driver.execute_script(f"document.getElementById('reportEndDate').value = \"{report_end_date}\";")
+
+    # View report button
+    button = driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/table/tbody/tr/td[2]/div[2]/table/tbody/tr/td/div/form/table/tbody/tr[2]/td/table[3]/tbody/tr/td/input")
+    button.click()
+
+    print("Retrieving report...")
+    sys.stdout.flush()
+    tm.sleep(1)
+
+    while not os.path.exists(os.path.join(datapath, "tpActualVsScheduledVarianceAction.pdf")):
+        tm.sleep(1)
+    tm.sleep(2)
+
+    print("Parsing report...")
+    sys.stdout.flush()
+    tm.sleep(1)
+
+    with pdfplumber.open(f"{datapath}/tpActualVsScheduledVarianceAction.pdf") as pdf:
+        for page in pdf.pages:
+            report_content += "\n" + page.extract_text(layout=True, x_density=6)
+
+    driver.close()
 
 ## Parse report section
-print("Parsing report...")
-
-report_content = ""
-with pdfplumber.open("tpActualVsScheduledVarianceAction.pdf") as pdf:
-    for page in pdf.pages:
-        report_content += "\n" + page.extract_text(layout=True, x_density=6)
 
 pattern = r"(Actual|Vs.|Punch|Report|Orland|Park|FSU|Clock-In|Clock-Out|Employee" \
           r"Name|Date|Actual|Scheduled|Clock-In/Out|Clock-In/Out|Variance|Employee Name|/Out|Working)"
@@ -176,7 +182,6 @@ for employee in split_report:
 
         df = pd.concat([df, row], ignore_index=True)
 
-
 ## Connect to SQL server
 
 cnxn = pyodbc.connect("Driver={SQL Server Native Client 11.0};"
@@ -197,6 +202,9 @@ for index, row in df.iterrows():
     )
 cnxn.commit()
 cursor.close()
-os.remove("tpActualVsScheduledVarianceAction.pdf")
+os.chdir(datapath)
+os.rename(f"tpActualVsScheduledVarianceAction.pdf", f"pActualVsScheduledVarianceAction_{datetime.now().strftime('%S%M%H%d%m%Y')}.pdf")
 
 print("Done")
+sys.stdout.flush()
+tm.sleep(1)

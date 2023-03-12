@@ -4075,3 +4075,106 @@ Shutting down due to socket process crash.
 A content process crashed and MOZ_CRASHREPORTER_SHUTDOWN is set, shutting down
 JavaScript error: , line 0: AbortError: Actor 'Conduits' destroyed before query 'RunListener' was resolved
 console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1678241903774	geckodriver	INFO	Listening on 127.0.0.1:52640
+1678241906787	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "52641" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Isaac\\AppData\\Local\\Temp\\rust_mozprofilebmIYK6"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1678241906990	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1678241906993	Marionette	INFO	Listening on port 52649
+WebDriver BiDi listening on ws://127.0.0.1:52641
+Read port: 52649
+1678241907226	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Isaac\\AppData\\Local\\Temp\\rust_mozprofilebmIYK6\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:52641/devtools/browser/275c4c21-7a24-4d33-8e39-d7fc21deab4f
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://cfahome.okta.com."
+JavaScript warning: https://ok4static.oktacdn.com/assets/js/vendor/lib/fingerprint2.min.68ab45bd98459cb766f3ab26d086e5f5.js, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://cfahome.okta.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://cfahome.okta.com."
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+1678241913720	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+1678241914399	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+1678241915010	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://backoffice.cfahome.com."
+JavaScript error: resource://gre/modules/pdfjs.js, line 31: NS_ERROR_FACTORY_NOT_REGISTERED: 
+JavaScript error: resource://gre/modules/pdfjs.js, line 31: NS_ERROR_FACTORY_NOT_REGISTERED: 
+1678243009620	Marionette	INFO	Stopped listening on port 52649
+Dynamically enable window occlusion 1
+1678332375341	geckodriver	INFO	Listening on 127.0.0.1:57146
+1678332378360	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "57147" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Isaac\\AppData\\Local\\Temp\\rust_mozprofilelUK3i4"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1678332378565	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1678332378568	Marionette	INFO	Listening on port 57155
+WebDriver BiDi listening on ws://127.0.0.1:57147
+Read port: 57155
+1678332378786	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Isaac\\AppData\\Local\\Temp\\rust_mozprofilelUK3i4\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:57147/devtools/browser/22f1154e-6fe8-488d-8bd3-a1e741768cf9
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://cfahome.okta.com."
+JavaScript warning: https://ok4static.oktacdn.com/assets/js/vendor/lib/fingerprint2.min.68ab45bd98459cb766f3ab26d086e5f5.js, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://cfahome.okta.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://cfahome.okta.com."
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+1678332385415	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+1678332386179	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+1678332387086	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://backoffice.cfahome.com."
+JavaScript error: resource://gre/modules/pdfjs.js, line 31: NS_ERROR_FACTORY_NOT_REGISTERED: 
+JavaScript error: resource://gre/modules/pdfjs.js, line 31: NS_ERROR_FACTORY_NOT_REGISTERED: 
+JavaScript error: , line 0: NS_ERROR_NOT_AVAILABLE
+JavaScript error: , line 0: NS_ERROR_NOT_AVAILABLE
+1678545036556	Marionette	INFO	Stopped listening on port 57155
+Dynamically enable window occlusion 1
+1678545197011	geckodriver	INFO	Listening on 127.0.0.1:62921
+1678545200030	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "62922" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Isaac\\AppData\\Local\\Temp\\rust_mozprofileqJQwoy"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1678545200244	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1678545200247	Marionette	INFO	Listening on port 62930
+WebDriver BiDi listening on ws://127.0.0.1:62922
+Read port: 62930
+1678545200451	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Isaac\\AppData\\Local\\Temp\\rust_mozprofileqJQwoy\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:62922/devtools/browser/855fa145-f0bd-4928-bdd7-f4b03f85aa18
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://cfahome.okta.com."
+JavaScript warning: https://ok4static.oktacdn.com/assets/js/vendor/lib/fingerprint2.min.68ab45bd98459cb766f3ab26d086e5f5.js, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://cfahome.okta.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://cfahome.okta.com."
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+1678545207042	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+1678545207783	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+1678545208638	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://backoffice.cfahome.com."
+JavaScript error: resource://gre/modules/pdfjs.js, line 31: NS_ERROR_FACTORY_NOT_REGISTERED: 
+JavaScript error: resource://gre/modules/pdfjs.js, line 31: NS_ERROR_FACTORY_NOT_REGISTERED: 
+1678549587383	Marionette	INFO	Stopped listening on port 62930
+Dynamically enable window occlusion 1
+ng command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "63450" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Isaac\\AppData\\Local\\Temp\\rust_mozprofileUOSNNV"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1678548844391	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1678548844394	Marionette	INFO	Listening on port 63457
+WebDriver BiDi listening on ws://127.0.0.1:63450
+Read port: 63457
+1678548844591	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Isaac\\AppData\\Local\\Temp\\rust_mozprofileUOSNNV\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:63450/devtools/browser/14846183-40ed-44f9-8d29-74b81dd47a0b
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://cfahome.okta.com."
+JavaScript warning: https://ok4static.oktacdn.com/assets/js/vendor/lib/fingerprint2.min.68ab45bd98459cb766f3ab26d086e5f5.js, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://cfahome.okta.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://cfahome.okta.com."
+1678548851055	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+1678548851724	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+1678548852357	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://backoffice.cfahome.com."
+JavaScript error: resource://gre/modules/pdfjs.js, line 31: NS_ERROR_FACTORY_NOT_REGISTERED: 
+JavaScript error: resource://gre/modules/pdfjs.js, line 31: NS_ERROR_FACTORY_NOT_REGISTERED: 
+1678549588480	Marionette	INFO	Stopped listening on port 63457
+Dynamically enable window occlusion 1
